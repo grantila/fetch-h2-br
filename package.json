@@ -1,0 +1,53 @@
+{
+  "name": "fetch-h2-br",
+  "version": "0.0.0",
+  "description": "🥐  Brotli decoder to fetch-h2-br",
+  "author": "Gustaf Räntilä",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/grantila/fetch-h2-br/issues"
+  },
+  "homepage": "https://github.com/grantila/fetch-h2-br#readme",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "directories": {},
+  "engines": {
+    "node": ">=8.4"
+  },
+  "scripts": {
+    "build": "./node_modules/.bin/rimraf dist && ./node_modules/.bin/tsc -p .",
+    "test": "node_modules/.bin/istanbul cover node_modules/.bin/_mocha --bail --check-leaks -- dist/test",
+    "buildtest": "npm run build && npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/grantila/fetch-h2-br"
+  },
+  "keywords": [
+    "fetch",
+    "fetch-h2",
+    "h2",
+    "br",
+    "brotli"
+  ],
+  "peerDependencies": {
+    "fetch-h2": "0.x"
+  },
+  "devDependencies": {
+    "@types/get-stream": "3.x",
+    "@types/iltorb": "2.x",
+    "@types/mocha": "2.x",
+    "@types/node": "8.x",
+    "@types/tough-cookie": "2.x",
+    "chai": "4.x",
+    "coveralls": "2.x",
+    "fetch-h2": "0.x",
+    "istanbul": "1.1.0-alpha.1",
+    "mocha": "4.x",
+    "rimraf": "2.x",
+    "typescript": "2.6.x"
+  },
+  "dependencies": {
+    "iltorb": "2.x"
+  }
+}
