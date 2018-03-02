@@ -4,6 +4,8 @@
 
 # 🥐  Brotli decoder to [`fetch-h2`](https://www.npmjs.com/package/fetch-h2)
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/grantila/fetch-h2-br.svg)](https://greenkeeper.io/)
+
 This package provides a content decoder for the Brotli (`br`) encoding using the [`iltorb`](https://www.npmjs.com/package/iltorb) package (which is a wrapper around the native `brotli` C library). By using this with [`fetch-h2`](https://www.npmjs.com/package/fetch-h2), requests will add `'br'` as accepted encoding to the server, and will decode it.
 
 Use this on the default `fetch-h2` context by its `setup( )`, or for new contexts when creating them.
