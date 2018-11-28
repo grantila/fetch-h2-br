@@ -14,11 +14,15 @@
   "engines": {
     "node": ">=8.4"
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "./node_modules/.bin/rimraf dist && ./node_modules/.bin/tsc -p .",
     "mocha": "node_modules/.bin/mocha --bail --check-leaks dist/test",
     "test": "node_modules/.bin/nyc npm run mocha",
     "buildtest": "npm run build && npm run test",
+    "prepack": "npm run build && npm run test",
     "travis-deploy-once": "travis-deploy-once",
     "semantic-release": "semantic-release",
     "cz": "git-cz"
