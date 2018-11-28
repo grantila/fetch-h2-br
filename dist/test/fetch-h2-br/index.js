@@ -6,7 +6,7 @@ const get_stream_1 = require("get-stream");
 const iltorb_1 = require("iltorb");
 const server_1 = require("fetch-h2/dist/test/lib/server");
 const fetch_h2_1 = require("fetch-h2");
-const _1 = require("../../");
+const __1 = require("../../");
 afterEach(fetch_h2_1.disconnectAll);
 function ensureStatusSuccess(response) {
     if (response.status < 200 || response.status >= 300)
@@ -18,7 +18,7 @@ describe('basic', () => {
         const { server, port } = await server_1.makeServer();
         const host = 'localhost';
         const testData = { foo: "bar" };
-        const { fetch, disconnectAll } = fetch_h2_1.context({ decoders: [_1.default()] });
+        const { fetch, disconnectAll } = fetch_h2_1.context({ decoders: [__1.default()] });
         const response = ensureStatusSuccess(await fetch(`http://localhost:${port}/compressed/gzip`, {
             method: 'POST',
             json: testData,
@@ -48,7 +48,7 @@ describe('basic', () => {
         const { server, port } = await server_1.makeServer({ matchers });
         const host = 'localhost';
         const testData = { foo: "bar" };
-        const { fetch, disconnectAll } = fetch_h2_1.context({ decoders: [_1.default()] });
+        const { fetch, disconnectAll } = fetch_h2_1.context({ decoders: [__1.default()] });
         const response = ensureStatusSuccess(await fetch(`http://localhost:${port}/compressed-br`, {
             method: 'POST',
             json: testData,

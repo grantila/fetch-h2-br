@@ -11,7 +11,7 @@ install:
   - npm install
   - npm run build
 after_script:
-  - "test -e ./coverage/lcov.info && cat ./coverage/lcov.info | node_modules/.bin/coveralls"
+  - "node_modules/.bin/nyc report --reporter=text-lcov | node_modules/.bin/coveralls"
 after_success:
   - npm run travis-deploy-once "npm run semantic-release"
 branches:

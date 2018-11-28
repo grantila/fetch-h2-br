@@ -16,7 +16,8 @@
   },
   "scripts": {
     "build": "./node_modules/.bin/rimraf dist && ./node_modules/.bin/tsc -p .",
-    "test": "node_modules/.bin/istanbul cover node_modules/.bin/_mocha --bail --check-leaks -- dist/test",
+    "mocha": "node_modules/.bin/mocha --bail --check-leaks dist/test",
+    "test": "node_modules/.bin/nyc npm run mocha",
     "buildtest": "npm run build && npm run test",
     "travis-deploy-once": "travis-deploy-once",
     "semantic-release": "semantic-release",
@@ -39,19 +40,19 @@
   "devDependencies": {
     "@types/get-stream": "3.x",
     "@types/iltorb": "2.x",
-    "@types/mocha": "2.x",
-    "@types/node": "8.x",
+    "@types/mocha": "5.x",
+    "@types/node": "10.x",
     "@types/tough-cookie": "2.x",
     "chai": "4.x",
-    "coveralls": "2.x",
+    "coveralls": "3.x",
     "cz-conventional-changelog": "2.x",
     "fetch-h2": "1.x",
-    "istanbul": "1.1.0-alpha.1",
-    "mocha": "4.x",
+    "mocha": "5.x",
+    "nyc": "13.x",
     "rimraf": "2.x",
     "semantic-release": "15.x",
     "travis-deploy-once": "5.x",
-    "typescript": "2.6.x"
+    "typescript": "3.x"
   },
   "dependencies": {
     "iltorb": "2.x"
