@@ -1,6 +1,6 @@
 {
   "name": "fetch-h2-br",
-  "version": "1.0.0",
+  "version": "0.0.0-semantically-released",
   "description": "🥐  Brotli decoder to fetch-h2-br",
   "author": "Gustaf Räntilä",
   "license": "MIT",
@@ -17,11 +17,14 @@
   "scripts": {
     "build": "./node_modules/.bin/rimraf dist && ./node_modules/.bin/tsc -p .",
     "test": "node_modules/.bin/istanbul cover node_modules/.bin/_mocha --bail --check-leaks -- dist/test",
-    "buildtest": "npm run build && npm run test"
+    "buildtest": "npm run build && npm run test",
+    "travis-deploy-once": "travis-deploy-once",
+    "semantic-release": "semantic-release",
+    "cz": "git-cz"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/grantila/fetch-h2-br"
+    "url": "https://github.com/grantila/fetch-h2-br"
   },
   "keywords": [
     "fetch",
@@ -41,13 +44,21 @@
     "@types/tough-cookie": "2.x",
     "chai": "4.x",
     "coveralls": "2.x",
+    "cz-conventional-changelog": "2.x",
     "fetch-h2": "0.x",
     "istanbul": "1.1.0-alpha.1",
     "mocha": "4.x",
     "rimraf": "2.x",
+    "semantic-release": "15.x",
+    "travis-deploy-once": "5.x",
     "typescript": "2.6.x"
   },
   "dependencies": {
     "iltorb": "2.x"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
