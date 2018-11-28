@@ -47,7 +47,7 @@ Create a new context where `'br'` should be supported:
 import { context } from 'fetch-h2'
 import brDecode from 'fetch-h2-br'
 
-// Setup only once to avoid undefined behavior
+// Create a context where 'br' is supported
 const { fetch } = context( { decoders: [ brDecode( ) ] } );
 
 // Now, all subsequent fetch-calls with this particular fetch will support the 'br' encoding:
@@ -55,7 +55,8 @@ const response = await fetch( 'https://host/file' );
 
 // Yet another context
 const { fetch: fetchOther } = context( );
-// fetchOther will *not* support 'br'
+// fetchOther will *not* support 'br':
+const response2 = await fetchOther( 'https://host/file' );
 ```
 
 [npm-image]: https://img.shields.io/npm/v/fetch-h2-br.svg
