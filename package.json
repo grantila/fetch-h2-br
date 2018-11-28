@@ -34,7 +34,7 @@
     "brotli"
   ],
   "peerDependencies": {
-    "fetch-h2": "0.x"
+    "fetch-h2": "1.x"
   },
   "devDependencies": {
     "@types/get-stream": "3.x",
@@ -45,7 +45,7 @@
     "chai": "4.x",
     "coveralls": "2.x",
     "cz-conventional-changelog": "2.x",
-    "fetch-h2": "0.x",
+    "fetch-h2": "1.x",
     "istanbul": "1.1.0-alpha.1",
     "mocha": "4.x",
     "rimraf": "2.x",
