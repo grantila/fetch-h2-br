@@ -39,7 +39,7 @@
     "brotli"
   ],
   "peerDependencies": {
-    "fetch-h2": "1.x"
+    "fetch-h2": ">=1.x"
   },
   "devDependencies": {
     "@types/get-stream": "3.x",
@@ -48,9 +48,10 @@
     "@types/node": "10.x",
     "@types/tough-cookie": "2.x",
     "chai": "4.x",
+    "commitizen": "3.x",
     "coveralls": "3.x",
     "cz-conventional-changelog": "2.x",
-    "fetch-h2": "1.x",
+    "fetch-h2": ">=1.x",
     "mocha": "5.x",
     "nyc": "13.x",
     "rimraf": "2.x",
