@@ -12,13 +12,14 @@
   "types": "./dist/index.d.ts",
   "directories": {},
   "engines": {
-    "node": ">=8.4"
+    "node": ">=10"
   },
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "./node_modules/.bin/rimraf dist && ./node_modules/.bin/tsc -p .",
+    "build:deps": "scripts/build-deps.sh",
+    "build": "node_modules/.bin/rimraf dist && ./node_modules/.bin/tsc -p .",
     "mocha": "node_modules/.bin/mocha --bail --check-leaks dist/test",
     "test": "node_modules/.bin/nyc npm run mocha",
     "buildtest": "npm run build && npm run test",
@@ -42,6 +43,7 @@
     "fetch-h2": ">=1.x"
   },
   "devDependencies": {
+    "@types/chai": "^4.1.7",
     "@types/get-stream": "3.x",
     "@types/iltorb": "2.x",
     "@types/mocha": "5.x",
@@ -52,6 +54,7 @@
     "coveralls": "3.x",
     "cz-conventional-changelog": "2.x",
     "fetch-h2": ">=1.x",
+    "fetch-h2-full": "https://github.com/grantila/fetch-h2",
     "mocha": "5.x",
     "nyc": "13.x",
     "rimraf": "2.x",

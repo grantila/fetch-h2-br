@@ -1,10 +1,10 @@
 'use strict'
 
-import { DecodeFunction, Decoder } from 'fetch-h2'
+import { Decoder } from 'fetch-h2'
 import { decompressStream } from 'iltorb'
 
 
-export default function brDecode( )
+export default function brDecode( ): Decoder
 {
 	return {
 		name: 'br',

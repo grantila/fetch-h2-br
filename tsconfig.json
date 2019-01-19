@@ -5,10 +5,14 @@
 		"outDir": "dist",
 		"sourceMap": true,
 		"module": "CommonJS",
-		"target": "esnext"
+		"target": "esnext",
+		"noUnusedParameters": true,
+		"noUnusedLocals": true,
+		"strict": true
 	},
 	"include": [
 		"index.ts",
-		"test"
+		"test",
+		"node_modules/fetch-h2-full/dist"
 	]
 }

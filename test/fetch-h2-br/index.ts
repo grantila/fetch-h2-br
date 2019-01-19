@@ -5,36 +5,42 @@ import { expect } from 'chai'
 import { buffer as getStreamAsBuffer } from 'get-stream'
 import { compressStream } from 'iltorb'
 
-import { makeServer } from 'fetch-h2/dist/test/lib/server'
+import { Matcher } from 'fetch-h2-full/dist/test/lib/server-common'
+import { makeMakeServer } from 'fetch-h2-full/dist/test/lib/server-helpers'
 
-import { fetch, context, disconnectAll, Response } from 'fetch-h2'
+import { context, Response } from 'fetch-h2'
 
 import brDecode from '../../'
 
-afterEach( disconnectAll );
 
 function ensureStatusSuccess( response: Response ): Response
 {
+	/* istanbul ignore if */
 	if ( response.status < 200 || response.status >= 300 )
 		throw new Error( "Status not 2xx" );
 	return response;
 }
 
-describe( 'basic', ( ) =>
+const prepare = async ( ) =>
+	makeMakeServer( { proto: 'http:', version: 'http2' } );
+
+describe( 'basic', async ( ) =>
 {
+	const host = 'localhost';
+
 	it( 'should accept brotli but decode gzip', async ( ) =>
 	{
+		const { cycleOpts, makeServer } = await prepare( );
 		const { server, port } = await makeServer( );
 
-		const host = 'localhost';
 		const testData = { foo: "bar" };
 
 		const { fetch, disconnectAll } =
-			context( { decoders: [ brDecode( ) ] } );
+			context( { ...cycleOpts, decoders: [ brDecode( ) ] } );
 
 		const response = ensureStatusSuccess(
 			await fetch(
-				`http://localhost:${port}/compressed/gzip`,
+				`http://${host}:${port}/compressed/gzip`,
 				{
 					method: 'POST',
 					json: testData,
@@ -57,9 +63,12 @@ describe( 'basic', ( ) =>
 
 	it( 'should accept and decode brotli', async ( ) =>
 	{
-		const matchers = [
-			( { path, stream, headers } ) =>
+		const { cycleOpts, makeServer } = await prepare( );
+
+		const matchers: Array< Matcher > = [
+			( { path, stream } ) =>
 			{
+				/* istanbul ignore if */
 				if ( path !== '/compressed-br' )
 					return false;
 
@@ -78,15 +87,14 @@ describe( 'basic', ( ) =>
 
 		const { server, port } = await makeServer( { matchers } );
 
-		const host = 'localhost';
 		const testData = { foo: "bar" };
 
 		const { fetch, disconnectAll } =
-			context( { decoders: [ brDecode( ) ] } );
+			context( { ...cycleOpts, decoders: [ brDecode( ) ] } );
 
 		const response = ensureStatusSuccess(
 			await fetch(
-				`http://localhost:${port}/compressed-br`,
+				`http://${host}:${port}/compressed-br`,
 				{
 					method: 'POST',
 					json: testData,
