@@ -19,11 +19,12 @@
   ],
   "scripts": {
     "build:deps": "scripts/build-deps.sh",
-    "build": "node_modules/.bin/rimraf dist && ./node_modules/.bin/tsc -p .",
+    "build:core": "node_modules/.bin/rimraf dist && ./node_modules/.bin/tsc -p .",
+    "build": "npm run build:deps && npm run build:core",
     "mocha": "node_modules/.bin/mocha --bail --check-leaks dist/test",
     "test": "node_modules/.bin/nyc npm run mocha",
     "buildtest": "npm run build && npm run test",
-    "prepack": "npm run build && npm run test",
+    "prepack": "npm run build:deps && npm run build && npm run test",
     "travis-deploy-once": "travis-deploy-once",
     "semantic-release": "semantic-release",
     "cz": "git-cz"
